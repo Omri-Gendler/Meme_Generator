@@ -3,8 +3,34 @@
     width: 100%;
     border-radius: 50px;
     background-color: green;
+    color: white;
 }
 
 .header-nav {
     gap: 10px;
+    margin-right: 12em;
+}
+
+.logo {
+    margin-left: 10em;
+}
+
+.gallery {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.gallery:hover {
+    cursor: pointer;
+}
+
+.about {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.about:hover {
+    cursor: pointer;
 }
