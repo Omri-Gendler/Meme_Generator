@@ -1,0 +1,14 @@
+.text-edit button:nth-child(1) {
+    background-color: lightblue;
+    border: none;
+}
+
+.text-edit button:nth-child(2) {
+    background-color: lightgreen;
+    border: none;
+}
+
+.text-edit button:nth-child(3) {
+    background-color: red;
+    border: none;
+}

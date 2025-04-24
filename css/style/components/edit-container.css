@@ -2,4 +2,49 @@
     border-radius: 50px;
     border: none;
     text-align: center;
+    margin-bottom: 2em
+}
+
+.text-edit-container {
+    gap: 2em;
+    max-width: 19em;
+    margin-bottom: 1em;
+}
+
+.text-edit-container button {
+    border-radius: 10px;
+    border: none;
+}
+
+.impact {
+    width: 10em;
+    border-radius: 10px;
+}
+
+.text-edit {
+    gap: 2em;
+}
+
+.sticker-container {
+    background-color: green;
+    margin-bottom: 1em;
+}
+
+.share-container {
+    justify-content: space-evenly;
+    gap: .5em;
+}
+
+.share {
+    background-color: rgb(29, 31, 182);
+    width: 45%;
+    border-radius: 20px;
+    border: none;
+}
+
+.download {
+    background-color: rgb(158, 28, 158);
+    width: 45%;
+    border-radius: 20px;
+    border: none;
 }
