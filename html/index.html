@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mister Meme</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/be5e12c42a.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,29 +21,31 @@
             <canvas class="canvas" height="50" width="50"></canvas>
             <div class="edit-container grid">
                 <input type="text" placeholder="type your text" class="meme-text" />
-                <button>updown</button>
-                <button>+</button>
-                <button>garbage</button>
-                <div class="text-edit-container">
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <select type="impact" id="impact" name="impact">
+                <div class="text-edit flex justify-content">
+                    <button class="small-button">updown</button>
+                    <button class="small-button">+</button>
+                    <button class="small-button">garbage</button>
+                </div>
+                <div class="text-edit-container flex wrap">
+                    <button>+</button>
+                    <button>-</button>
+                    <button>left</button>
+                    <button>middle</button>
+                    <button>right</button>
+                    <select class="impact text-align" type="impact" id="impact" name="impact">
                         <option value="impact">impact</option>
                     </select>
-                    <button></button>
+                    <button>S</button>
                     <input type="color">
                 </div>
                 <div class="sticker-container">
-                    <button></button>
+                    <button><i class="fa-solid fa-sort"></i></button>
                     <button></button>
                     <button></button>
                     <button></button>
                     <button></button>
                 </div>
-                <div class="share-container">
+                <div class="share-container flex">
                     <button class="share">share</button>
                     <button class="download">download</button>
                 </div>
@@ -51,5 +54,6 @@
     </div>
 
 </body>
+<script src="/js/gallery.js"></script>
 
 </html>
