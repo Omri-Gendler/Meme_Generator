@@ -1,0 +1,9 @@
+/* basics */
+@import url('style/basics/base.css');
+@import url('style/basics/helpers.css');
+@import url('style/basics/buttons.css');
+
+/* components */
+@import url('style/components/header.css');
+@import url('style/components/navigation.css');
+@import url('style/components/canvas.css');

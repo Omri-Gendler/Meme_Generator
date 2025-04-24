@@ -1,0 +1,10 @@
+.header {
+    height: 25%;
+    width: 100%;
+    border-radius: 50px;
+    background-color: green;
+}
+
+.header-nav {
+    gap: 10px;
+}
