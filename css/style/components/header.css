@@ -2,12 +2,12 @@
     height: 25%;
     width: 100%;
     border-radius: 50px;
-    background-color: green;
+    background-image: linear-gradient(to right, #385edb, #4ed657);
     color: white;
 }
 
 .header-nav {
-    gap: 10px;
+    /* gap: 10px; */
     margin-right: 12em;
 }
 
