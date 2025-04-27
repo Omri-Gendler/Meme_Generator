@@ -1,3 +1,9 @@
+body {
+    ::first-letter {
+        text-transform: uppercase;
+    }
+}
+
 html {
     background-color: lightseagreen;
 }
