@@ -10,8 +10,8 @@ html {
 
 .application-container {
     height: 90%;
-    margin: 25px;
-    padding: 10px;
+    margin: 1em;
+    padding: 1em;
     border-radius: 10px;
     /* background-image: url(/meme-imgs/background/5059a05f-e254-4c95-a452-713597f19ac6.jpg); */
     border: 1px solid #000;
