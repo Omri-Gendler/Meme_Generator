@@ -2,3 +2,8 @@ h1 {
     text-align: center;
     text-decoration: underline;
 }
+
+img {
+    width: 200px;
+    height: 200px;
+}
