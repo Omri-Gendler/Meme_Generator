@@ -1,3 +1,10 @@
+.edit-container {
+    width: 50%;
+    background-color: rgb(51, 43, 43);
+    padding: 1em;
+    border-radius: 50px;
+}
+
 .meme-text {
     border-radius: 50px;
     border: none;
@@ -6,9 +13,13 @@
 }
 
 .text-edit-container {
+    background-color: lightseagreen;
+    padding: 1em;
     gap: 2em;
-    max-width: 19em;
+    max-width: 25em;
     margin-bottom: 1em;
+    justify-content: center;
+    border-radius: 50px;
 }
 
 .text-edit-container button {
@@ -26,8 +37,10 @@
 }
 
 .sticker-container {
-    background-color: green;
+    background-color: white;
     margin-bottom: 1em;
+    text-align: center;
+    border-radius: 50px;
 }
 
 .share-container {

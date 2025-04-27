@@ -9,6 +9,8 @@ html {
 }
 
 .application-container {
+    position: relative;
+    z-index: 1;
     height: 90%;
     margin: 1em;
     padding: 1em;
@@ -17,4 +19,18 @@ html {
     border: 1px solid #000;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.application-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(/meme-imgs/background/5059a05f-e254-4c95-a452-713597f19ac6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    border-radius: 10px;
 }
