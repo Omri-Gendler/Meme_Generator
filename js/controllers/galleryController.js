@@ -11,7 +11,7 @@ function handleImgClick(ev) {
     }
 
     localStorage.setItem('imgSelected', imgSrc)
-    window.location.href = '/html/index.html'
+    window.location.href = 'index.html'
 }
 
 document.addEventListener('DOMContentLoaded', () => {
