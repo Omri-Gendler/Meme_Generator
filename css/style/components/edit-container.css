@@ -1,9 +1,10 @@
 .edit-container {
-    width: 50%;
+    width: 80%;
     background-color: rgb(51, 43, 43);
     padding: 1em;
     border-radius: 50px;
     justify-content: center;
+    height: minmax(90%);
 }
 
 .meme-text {

@@ -4,6 +4,7 @@
     border-radius: 50px;
     background-image: linear-gradient(to right, #385edb, #4ed657);
     color: white;
+    height: minmax(90%);
 }
 
 .header-nav {

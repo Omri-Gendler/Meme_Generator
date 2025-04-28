@@ -1,6 +1,6 @@
 'use strict';
 
-function handleImgClick(ev) {
+function saveImgToStorage(ev) {
 
     const img = ev.target
     const imgSrc = img.getAttribute('src')
@@ -17,6 +17,6 @@ function handleImgClick(ev) {
 document.addEventListener('DOMContentLoaded', () => {
     const galleryImgs = document.querySelectorAll('.gallery-container .gallery-imgs')
     galleryImgs.forEach((img) => {
-        img.addEventListener('click', handleImgClick)
+        img.addEventListener('click', saveImgToStorage)
     })
 })
