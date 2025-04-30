@@ -34,7 +34,10 @@ function drawImg() {
         img.onload = () => {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
             gCurrImg = img
+<<<<<<< HEAD
             renderCanvas()
+=======
+>>>>>>> 05e2de07ee613bcdb42d32e590bf2b11b4cc38ac
         }
     }
 }
@@ -78,7 +81,10 @@ function loadInitImg(imgSrc) {
 
 function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+<<<<<<< HEAD
     console.log('gCurrImg:', gCurrImg)
+=======
+>>>>>>> 05e2de07ee613bcdb42d32e590bf2b11b4cc38ac
     if (gCurrImg) {
         gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
     }
