@@ -4,6 +4,7 @@ let gCanvas = null
 let gCtx = null
 let gCurrImg = null
 let gCurrText = ''
+let gTextLayers = []
 
 function initEditor() {
     gCanvas = document.querySelector('.canvas')
@@ -44,20 +45,46 @@ function getText() {
     console.log('Text:', gCurrText)
 }
 
+function getTextInput() {
+    const textInput = document.querySelector('.meme-text')
+    const newTextLayer = {
+        text: textInput.value,
+        x: gCanvas.width / 2,
+        y: gCanvas.height / 2,
+        font: 'Arial',
+        fontSize: 40,
+        color: 'white',
+        strokeColor: 'black',
+        strokeWidth: 2,
+        textAlign: 'center'
+    }
+
+    gTextLayers.push(newTextLayer)
+    textInput.value = ''
+    renderCanvas()
+}
+
 function drawText() {
     gCurrText = document.querySelector('.meme-text').value
-    console.log('Text:', gCurrText)
+    let y = 50
+
 
     const fontSize = 40
     const strokeColor = 'black'
     const fillColor = 'white'
     const lineWidth = 2
+    const font = 'Arial'
 
-    gCtx.fontSize = `${fontSize}px`
-    gCtx.textAlign = 'center'
-    gCtx.strokeStyle = strokeColor
-    gCtx.fillStyle = fillColor
-    gCtx.lineWidth = lineWidth
+    gTextLayers.forEach((layer) => {
+        gCtx.font = `${fontSize}px ${font}`
+        gCtx.fillStyle = fillColor
+        gCtx.strokeStyle = strokeColor
+        gCtx.lineWidth = lineWidth
+        y += fontSize + 10
+
+        gCtx.strokeText(layer.text, layer.x, layer.y)
+        gCtx.fillText(layer.text, layer.x, layer.y)
+    })
 
     gCtx.strokeText(gCurrText, gCanvas.width / 2, gCanvas.height / 2)
     gCtx.fillText(gCurrText, gCanvas.width / 2, gCanvas.height / 2)
@@ -78,15 +105,17 @@ function loadInitImg(imgSrc) {
 
 function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-    console.log('gCurrImg:', gCurrImg)
     if (gCurrImg) {
         gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
     }
     drawText()
-    console.log('Drawing text:', gCurrText)
-    console.log('Current image:', gCurrImg)
 }
 
+function addTextToCanvas() {
+    const textInput = document.querySelector('.meme-text')
+    renderCanvas()
+    textInput.value = ''
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     initEditor()
