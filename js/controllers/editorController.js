@@ -34,9 +34,7 @@ function drawImg() {
         img.onload = () => {
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
             gCurrImg = img
-<<<<<<< HEAD
             renderCanvas()
->>>>>>>>> Temporary merge branch 2
         }
     }
 }
@@ -80,10 +78,7 @@ function loadInitImg(imgSrc) {
 
 function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-<<<<<<<<< Temporary merge branch 1
-=========
     console.log('gCurrImg:', gCurrImg)
->>>>>>>>> Temporary merge branch 2
     if (gCurrImg) {
         gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
     }
