@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/be5e12c42a.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="initEditor()">
     <div class="application-container grid">
         <div class="header flex justify-content space-between align-items">
             <section class="logo">logo</section>
@@ -20,7 +20,7 @@
         <div class="main-content flex justify-content">
             <canvas class="canvas" height="300" width="300"></canvas>
             <div class="edit-container grid">
-                <input onchange="renderTextOnCanvas()" type="text" placeholder="type your text" class="meme-text" />
+                <input type="text" placeholder="type your text" class="meme-text" />
                 <div class="text-edit flex justify-content">
                     <button class="small-button">updown</button>
                     <button class="small-button">+</button>

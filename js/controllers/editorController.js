@@ -3,13 +3,12 @@
 let gCanvas = null
 let gCtx = null
 let gCurrImg = null
-let gCurrText = null
+let gCurrText = ''
 
 function initEditor() {
     gCanvas = document.querySelector('.canvas')
-
-    loadInitImg()
-    addTextInputListener()
+    gCtx = gCanvas.getContext('2d')
+    gCurrImg = localStorage.getItem('imgSelected')
 }
 
 function drawImg() {
@@ -19,6 +18,7 @@ function drawImg() {
         return
     }
 
+    gCanvas = canvas
     const ctx = canvas.getContext('2d')
     if (!ctx) {
         console.error('Context not found')
@@ -32,31 +32,21 @@ function drawImg() {
         img.src = imgSrc
 
         img.onload = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-            localStorage.removeItem('imgSelected')
+            gCurrImg = img
+            renderCanvas()
         }
     }
 }
 
-function renderCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-
-    if (gCurrImg) {
-        gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
-    } else {
-        console.error('No image loaded')
-        return
-    }
-
-    renderTextOnCanvas()
+function getText() {
+    const textInput = document.querySelector('.meme-text').value
+    console.log('Text:', gCurrText)
 }
 
-function renderTextOnCanvas() {
-    if (!gCanvas || !gCtx) return
-
-    const text = document.querySelector('.meme-text').value
-    if (!text) return
+function drawText() {
+    gCurrText = document.querySelector('.meme-text').value
+    console.log('Text:', gCurrText)
 
     const fontSize = 40
     const strokeColor = 'black'
@@ -69,22 +59,8 @@ function renderTextOnCanvas() {
     gCtx.fillStyle = fillColor
     gCtx.lineWidth = lineWidth
 
-    gCtx.strokeText(text, gCanvas.width / 2, gCanvas.height / 2)
-    gCtx.fillText(text, gCanvas.width / 2, gCanvas.height / 2)
-
-}
-
-function addTextListener() {
-    const textInput = document.querySelector('.meme-text')
-    if (!textInput) {
-        console.error('Text input not found')
-        return
-    }
-
-    textInput.addEventListener('input', () => {
-        renderTextOnCanvas()
-        renderCanvas()
-    })
+    gCtx.strokeText(gCurrText, gCanvas.width / 2, gCanvas.height / 2)
+    gCtx.fillText(gCurrText, gCanvas.width / 2, gCanvas.height / 2)
 }
 
 function loadInitImg(imgSrc) {
@@ -100,19 +76,26 @@ function loadInitImg(imgSrc) {
     }
 }
 
-function addTextInputListener() {
-    const textInput = document.querySelector('.meme-text')
-
-    textInput.addEventListener('input', () => {
-        gCurrText = textInput.value
-        renderCanvas()
-    })
+function renderCanvas() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    console.log('gCurrImg:', gCurrImg)
+    if (gCurrImg) {
+        gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
+    }
+    drawText()
+    console.log('Drawing text:', gCurrText)
+    console.log('Current image:', gCurrImg)
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initEditor()
+    drawImg()
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-    drawImg(),renderCanvas()
+document.addEventListener('input', () => {
+    getText()
+    drawText()
+    drawImg()
+    renderCanvas()
 })
