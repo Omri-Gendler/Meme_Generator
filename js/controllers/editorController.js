@@ -7,7 +7,7 @@ let gCurrText = ''
 
 let gMeme = {
     selectedImgId: null,
-    selectedLineIdx: null,
+    selectedLineIdx: 0,
     lines: []
 }
 
@@ -27,12 +27,12 @@ function initEditor() {
 
     const imgSrcFromStorage = localStorage.getItem('imgSelected')
     if (imgSrcFromStorage) {
-        loadImgToCanvas()
+        loadImgToCanvas(imgSrcFromStorage)
     } else {
         console.error('No image found in local storage')
     }
+
     gMeme.lines = []
-    renderCanvas()
 }
 
 function loadImgToCanvas(imgSrc) {
@@ -41,8 +41,10 @@ function loadImgToCanvas(imgSrc) {
 
     img.onload = () => {
         gCurrImg = img
-        gCanvas.width = img.widthNaturalWidth
-        gCanvas.height = img.heightNaturalHeight
+        gCanvas.width = img.naturalWidth
+        gCanvas.height = img.naturalHeight
+        gMeme.lines = []
+        gMeme.selectedLineIdx = -1
         renderCanvas()
     }
     img.onerror = () => {
@@ -92,30 +94,66 @@ function loadInitImg(imgSrc) {
 }
 
 function addTextLine() {
-    const textInput = document.querySelector('.text-input')
-    const text = textInput.value.trim()
+    const textInput = document.querySelector('.meme-text')
+    const txt = textInput.value.trim()
 
     let yPos
-    let baseLine
+    let baseline
 
     if (gMeme.lines.length === 0) {
         yPos = TOP_TEXT_Y
-        baseLine = 'top'
+        baseline = 'top'
     } else if (gMeme.lines.length === 1) {
         yPos = gCanvas.height - BOTTOM_TEXT_Y_MARGIN
-        baseLine = 'bottom'
+        baseline = 'bottom'
     } else {
         return
     }
+
+    const newLine = {
+        text: txt,
+        x: gCanvas.width / 2,
+        y: yPos,
+        font: DEFAULT_FONT,
+        fontSize: DEFAULT_FONT_SIZE,
+        color: DEFAULT_COLOR,
+        strokeColor: DEFAULT_STROKE_COLOR,
+        strokeWidth: DEFAULT_STROKE_WIDTH,
+        textAlign: DEFAULT_TEXT_ALIGN,
+        textBaseline: baseline
+    }
+
+    gMeme.lines.push(newLine)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+
+    textInput.value = ''
+    renderCanvas()
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    initEditor()
-    drawImg()
-})
+function drawTextLine(line) {
+    if (!line) return
 
-document.addEventListener('input', () => {
-    drawText()
-    drawImg()
-    renderCanvas()
-})
+    gCtx.font = `${line.fontSize}px ${line.font}`
+    gCtx.fillStyle = line.color
+    gCtx.strokeStyle = line.strokeColor
+    gCtx.lineWidth = line.strokeWidth
+    gCtx.textAlign = line.textAlign
+    gCtx.textBaseline = line.textBaseline
+
+    gCtx.strokeText(line.text, line.x, line.y)
+    gCtx.fillText(line.text, line.x, line.y)
+}
+
+function renderCanvas() {
+
+    if (!gCtx || !gCanvas) return
+
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+
+    if (gCurrImg) {
+        gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
+    }
+    gMeme.lines.forEach((line) => {
+        drawTextLine()
+    })
+}
