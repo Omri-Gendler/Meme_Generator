@@ -106,10 +106,10 @@ function addTextLine() {
     } else if (gMeme.lines.length === 1) {
         yPos = gCanvas.height - BOTTOM_TEXT_Y_MARGIN
         baseline = 'bottom'
-    } else {
-        return
+    } else if (gMeme.lines.length >= 1) {
+        yPos = TOP_TEXT_Y
+        baseline = 'top'
     }
-
     const newLine = {
         text: txt,
         x: gCanvas.width / 2,
@@ -154,6 +154,6 @@ function renderCanvas() {
         gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
     }
     gMeme.lines.forEach((line) => {
-        drawTextLine()
+        drawTextLine(gMeme.lines[gMeme.selectedLineIdx])
     })
 }
