@@ -134,14 +134,14 @@ function drawTextLine(line) {
     if (!line) return
 
     gCtx.font = `${line.fontSize}px ${line.font}`
-    gCtx.fillStyle = line.color
-    gCtx.strokeStyle = line.strokeColor
+    gCtx.fillStyle = 'red'
+    gCtx.strokeStyle = 'red'
     gCtx.lineWidth = line.strokeWidth
     gCtx.textAlign = line.textAlign
     gCtx.textBaseline = line.textBaseline
 
     gCtx.strokeText(line.text, line.x, line.y)
-    gCtx.fillText(line.text, line.x, line.y)
+    gCtx.fillText(line.text, line.x, line.y)    
 }
 
 function renderCanvas() {
