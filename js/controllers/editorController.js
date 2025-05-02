@@ -33,6 +33,7 @@ function initEditor() {
     }
 
     gMeme.lines = []
+    addSmiley()
 }
 
 function loadImgToCanvas(imgSrc) {
@@ -99,17 +100,16 @@ function addTextLine() {
 
     let yPos
     let baseline
+    const currLineCount = gMeme.lines.length
 
-    if (gMeme.lines.length === 0) {
+    if (currLineCount % 2 === 0) {
         yPos = TOP_TEXT_Y
         baseline = 'top'
-    } else if (gMeme.lines.length === 1) {
+    } else {
         yPos = gCanvas.height - BOTTOM_TEXT_Y_MARGIN
         baseline = 'bottom'
-    } else if (gMeme.lines.length >= 1) {
-        yPos = TOP_TEXT_Y
-        baseline = 'top'
     }
+
     const newLine = {
         text: txt,
         x: gCanvas.width / 2,
@@ -141,7 +141,25 @@ function drawTextLine(line) {
     gCtx.textBaseline = line.textBaseline
 
     gCtx.strokeText(line.text, line.x, line.y)
-    gCtx.fillText(line.text, line.x, line.y)    
+    gCtx.fillText(line.text, line.x, line.y)
+}
+
+function upDown() {
+    const textInput = document.querySelector('.meme-text')
+    const txt = textInput.value.trim()
+
+    let yPos
+    let baseline
+    const currLineCount = gMeme.lines.length
+
+    if (currLineCount % 2 === 0) {
+        yPos = TOP_TEXT_Y
+        baseline = 'top'
+    } else {
+        yPos = gCanvas.height - BOTTOM_TEXT_Y_MARGIN
+        baseline = 'bottom'
+    }
+
 }
 
 function renderCanvas() {
