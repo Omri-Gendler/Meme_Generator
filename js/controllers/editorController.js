@@ -24,6 +24,30 @@ function initEditor() {
     gCanvas = document.querySelector('.canvas')
     gCtx = gCanvas.getContext('2d')
     gCurrImg = localStorage.getItem('imgSelected')
+
+    const imgSrcFromStorage = localStorage.getItem('imgSelected')
+    if (imgSrcFromStorage) {
+        loadImgToCanvas()
+    } else {
+        console.error('No image found in local storage')
+    }
+    gMeme.lines = []
+    renderCanvas()
+}
+
+function loadImgToCanvas(imgSrc) {
+    const img = new Image()
+    img.src = imgSrc
+
+    img.onload = () => {
+        gCurrImg = img
+        gCanvas.width = img.widthNaturalWidth
+        gCanvas.height = img.heightNaturalHeight
+        renderCanvas()
+    }
+    img.onerror = () => {
+        console.error('Failed to load image')
+    }
 }
 
 function drawImg() {
@@ -67,75 +91,22 @@ function loadInitImg(imgSrc) {
     }
 }
 
-function onEnterTextInput() {
-    const textInput = document.querySelector('.meme-text')
-    const newTextLayer = {
-        text: textInput.value,
-        x: gCanvas.width / 2,
-        y: gCanvas.height / 2,
-        font: 'Arial',
-        fontSize: 40,
-        color: 'white',
-        strokeColor: 'pink',
-        strokeWidth: 4,
-        textAlign: 'center'
+function addTextLine() {
+    const textInput = document.querySelector('.text-input')
+    const text = textInput.value.trim()
+
+    let yPos
+    let baseLine
+
+    if (gMeme.lines.length === 0) {
+        yPos = TOP_TEXT_Y
+        baseLine = 'top'
+    } else if (gMeme.lines.length === 1) {
+        yPos = gCanvas.height - BOTTOM_TEXT_Y_MARGIN
+        baseLine = 'bottom'
+    } else {
+        return
     }
-
-    gMeme.push(newTextLayer)
-    console.log('gTextLayer:', gMeme);
-}
-
-function addTextToCanvas() {
-    const textInput = document.querySelector('.meme-text')
-    onEnterTextInput()
-    textInput.value = ''
-}
-
-function increaseText() {
-    const currLayer = gMeme[gMeme.length - 1]
-    if (currLayer) {
-        currLayer.fontSize += 2
-        drawText()
-        renderCanvas()
-    }
-    else {
-        console.error('No text layer to increase size')
-    }
-
-}
-
-function drawText() {
-    gCurrText = document.querySelector('.meme-text').value
-
-    gCtx.strokeText(gCurrText, 50, 50)
-    gCtx.fillText(gCurrText, 50, 50)
-}
-
-function getTextInput() {
-    const textInput = document.querySelector('.meme-text')
-    const newTextLayer = {
-        text: textInput.value,
-        x: gCanvas.width / 2,
-        y: gCanvas.height / 2,
-        font: 'Arial',
-        fontSize: 40,
-        color: 'white',
-        strokeColor: 'black',
-        strokeWidth: 2,
-        textAlign: 'center'
-    }
-
-    gMeme.push(textInput.value)
-    // textInput.value = ''
-    renderCanvas()
-}
-
-function renderCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-    if (gCurrImg) {
-        gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height)
-    }
-    drawText()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
