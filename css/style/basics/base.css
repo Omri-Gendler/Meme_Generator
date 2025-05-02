@@ -2,10 +2,15 @@ body {
     ::first-letter {
         text-transform: uppercase;
     }
+
+    font-family: 'uri-font',
+    sans-serif;
 }
 
 html {
     background-color: lightseagreen;
+    font-family: 'uri-font', sans-serif;
+    font-size: 16px;
 }
 
 .application-container {

@@ -4,7 +4,21 @@ let gCanvas = null
 let gCtx = null
 let gCurrImg = null
 let gCurrText = ''
-let gTextLayers = []
+
+let gMeme = {
+    selectedImgId: null,
+    selectedLineIdx: null,
+    lines: []
+}
+
+const TOP_TEXT_Y = 40
+const BOTTOM_TEXT_Y_MARGIN = 40
+const DEFAULT_FONT_SIZE = 40
+const DEFAULT_FONT = 'Arial'
+const DEFAULT_COLOR = 'white'
+const DEFAULT_STROKE_COLOR = 'black'
+const DEFAULT_STROKE_WIDTH = 2
+const DEFAULT_TEXT_ALIGN = 'center'
 
 function initEditor() {
     gCanvas = document.querySelector('.canvas')
@@ -40,9 +54,61 @@ function drawImg() {
     }
 }
 
-function getText() {
-    const textInput = document.querySelector('.meme-text').value
-    console.log('Text:', gCurrText)
+function loadInitImg(imgSrc) {
+    if (!gCurrImg) {
+        console.error('No image selected')
+        return
+    }
+    const img = new Image()
+    img.src = imgSrc
+
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+    }
+}
+
+function onEnterTextInput() {
+    const textInput = document.querySelector('.meme-text')
+    const newTextLayer = {
+        text: textInput.value,
+        x: gCanvas.width / 2,
+        y: gCanvas.height / 2,
+        font: 'Arial',
+        fontSize: 40,
+        color: 'white',
+        strokeColor: 'pink',
+        strokeWidth: 4,
+        textAlign: 'center'
+    }
+
+    gMeme.push(newTextLayer)
+    console.log('gTextLayer:', gMeme);
+}
+
+function addTextToCanvas() {
+    const textInput = document.querySelector('.meme-text')
+    onEnterTextInput()
+    textInput.value = ''
+}
+
+function increaseText() {
+    const currLayer = gMeme[gMeme.length - 1]
+    if (currLayer) {
+        currLayer.fontSize += 2
+        drawText()
+        renderCanvas()
+    }
+    else {
+        console.error('No text layer to increase size')
+    }
+
+}
+
+function drawText() {
+    gCurrText = document.querySelector('.meme-text').value
+
+    gCtx.strokeText(gCurrText, 50, 50)
+    gCtx.fillText(gCurrText, 50, 50)
 }
 
 function getTextInput() {
@@ -59,48 +125,9 @@ function getTextInput() {
         textAlign: 'center'
     }
 
-    gTextLayers.push(newTextLayer)
-    textInput.value = ''
+    gMeme.push(textInput.value)
+    // textInput.value = ''
     renderCanvas()
-}
-
-function drawText() {
-    gCurrText = document.querySelector('.meme-text').value
-    let y = 50
-
-
-    const fontSize = 40
-    const strokeColor = 'black'
-    const fillColor = 'white'
-    const lineWidth = 2
-    const font = 'Arial'
-
-    gTextLayers.forEach((layer) => {
-        gCtx.font = `${fontSize}px ${font}`
-        gCtx.fillStyle = fillColor
-        gCtx.strokeStyle = strokeColor
-        gCtx.lineWidth = lineWidth
-        y += fontSize + 10
-
-        gCtx.strokeText(layer.text, layer.x, layer.y)
-        gCtx.fillText(layer.text, layer.x, layer.y)
-    })
-
-    gCtx.strokeText(gCurrText, gCanvas.width / 2, gCanvas.height / 2)
-    gCtx.fillText(gCurrText, gCanvas.width / 2, gCanvas.height / 2)
-}
-
-function loadInitImg(imgSrc) {
-    if (!gCurrImg) {
-        console.error('No image selected')
-        return
-    }
-    const img = new Image()
-    img.src = imgSrc
-
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-    }
 }
 
 function renderCanvas() {
@@ -111,19 +138,12 @@ function renderCanvas() {
     drawText()
 }
 
-function addTextToCanvas() {
-    const textInput = document.querySelector('.meme-text')
-    renderCanvas()
-    textInput.value = ''
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     initEditor()
     drawImg()
 })
 
 document.addEventListener('input', () => {
-    getText()
     drawText()
     drawImg()
     renderCanvas()
