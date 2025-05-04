@@ -12,7 +12,7 @@ let gMeme = {
 }
 
 const TOP_TEXT_Y = 40
-const BOTTOM_TEXT_Y_MARGIN = 40
+const BOTTOM_TEXT_Y_MARGIN = 450
 const DEFAULT_FONT_SIZE = 40
 const DEFAULT_FONT = 'Arial'
 const DEFAULT_COLOR = 'black'
@@ -24,7 +24,7 @@ function initEditor() {
     gCanvas = document.querySelector('.canvas')
     gCtx = gCanvas.getContext('2d')
 
-    const imgSrcFromStorage = localStorage.getItem('imgSelected');
+    const imgSrcFromStorage = localStorage.getItem('imgSelected')
     if (imgSrcFromStorage) {
         loadImgToCanvas(imgSrcFromStorage)
     } else {
@@ -300,5 +300,19 @@ function switchToNextLine() {
     gMeme.selectedLineIdx = (gMeme.selectedLineIdx === 0) ? 1 : 0
 
     syncInputWithSelectedLine()
+    renderCanvas()
+}
+
+function up() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.y = currLine.y - 10
+    drawTextLine(currLine)
+    renderCanvas()
+}
+
+function down() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.y = currLine.y + 10
+    drawTextLine(currLine)
     renderCanvas()
 }
