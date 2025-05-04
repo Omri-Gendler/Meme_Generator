@@ -1,5 +1,4 @@
 .edit-container {
-    width: 80%;
     background-color: rgb(51, 43, 43);
     padding: 1em;
     border-radius: 50px;
@@ -15,19 +14,23 @@
 }
 
 .text-edit-container {
-    background-color: lightseagreen;
+    background-color: #97a7a6b0;
     padding: 1em;
     gap: 2em;
     max-width: 25em;
     margin-bottom: 1em;
     align-self: center;
     justify-content: center;
-    border-radius: 50px;
+    border-radius: 18px;
 }
 
 .text-edit-container button {
     border-radius: 10px;
     border: none;
+}
+
+.text-edit-container button:hover {
+    cursor: pointer;
 }
 
 .impact {
@@ -40,10 +43,10 @@
 }
 
 .sticker-container {
-    background-color: white;
+    background-color: #97a7a6b0;
     margin-bottom: 1em;
     text-align: center;
-    border-radius: 50px;
+    border-radius: 18px;
 }
 
 .share-container {
@@ -52,15 +55,20 @@
 }
 
 .share {
-    background-color: rgb(29, 31, 182);
-    width: 45%;
+    background-color: rgb(114 213 255);
+    width: 10em;
     border-radius: 20px;
     border: none;
+    width: 10em;
+    height: 5em;
+    align-self: center;
 }
 
 .download {
-    background-color: rgb(158, 28, 158);
-    width: 45%;
-    border-radius: 20px;
+    background-color: rgb(114 213 255);
+    width: 10em;
+    height: 5em;
+    border-radius: 18px;
     border: none;
+    align-self: center;
 }

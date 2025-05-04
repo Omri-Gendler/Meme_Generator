@@ -4,6 +4,7 @@ let gCanvas = null
 let gCtx = null
 let gCurrImg = null
 let gCurrText = ''
+let gCurrColor = 'black'
 
 let gMeme = {
     selectedImgId: null,
@@ -122,82 +123,19 @@ function loadInitImg(imgSrc) {
     }
 }
 
-function addTextLine() {
-    const textInput = document.querySelector('.meme-text')
-    const txt = textInput.value.trim()
-
-    let yPos
-    let baseline
-    const currLineCount = gMeme.lines.length
-
-    if (currLineCount % 2 === 0) {
-        yPos = TOP_TEXT_Y
-        baseline = 'top'
-        renderCanvas()
-        console.log('gMeme.lines', gMeme.lines)
-        console.log('gMeme.selectedLineIdx', gMeme.selectedLineIdx);
-
-        // saveTextLine()
-    } else {
-        yPos = gCanvas.height - BOTTOM_TEXT_Y_MARGIN
-        baseline = 'bottom'
-        renderCanvas()
-        console.log('gMeme.lines', gMeme.lines)
-        console.log('gMeme.selectedLineIdx', gMeme.selectedLineIdx);
-        // saveTextLine()
-    }
-
-    const newLine = {
-        text: txt,
-        x: gCanvas.width / 2,
-        y: yPos,
-        font: DEFAULT_FONT,
-        fontSize: DEFAULT_FONT_SIZE,
-        color: DEFAULT_COLOR,
-        strokeColor: DEFAULT_STROKE_COLOR,
-        strokeWidth: DEFAULT_STROKE_WIDTH,
-        textAlign: DEFAULT_TEXT_ALIGN,
-        textBaseline: baseline
-    }
-
-    gMeme.lines.push(newLine)
-    gMeme.selectedLineIdx = gMeme.lines.length - 1
-
-    textInput.value = ''
-    updateTextInput()
-    renderCanvas()
-}
 
 function drawTextLine(line) {
     if (!line) return
 
     gCtx.font = `${line.fontSize}px ${line.font}`
-    gCtx.fillStyle = 'black'
-    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = line.color
+    gCtx.strokeStyle = line.strokeColor
     gCtx.lineWidth = line.strokeWidth
     gCtx.textAlign = line.textAlign
     gCtx.textBaseline = line.textBaseline
 
     gCtx.strokeText(line.text, line.x, line.y)
     gCtx.fillText(line.text, line.x, line.y)
-}
-
-function upDown() {
-    const textInput = document.querySelector('.meme-text')
-    const txt = textInput.value.trim()
-
-    let yPos
-    let baseline
-    const currLineCount = gMeme.lines.length
-
-    if (currLineCount % 2 === 0) {
-        yPos = TOP_TEXT_Y
-        baseline = 'top'
-    } else {
-        yPos = gCanvas.height - BOTTOM_TEXT_Y_MARGIN
-        baseline = 'bottom'
-    }
-
 }
 
 function renderCanvas() {
@@ -264,24 +202,6 @@ function onTextInput() {
     if (gMeme.selectedLineIdx >= 0 && gMeme.lines[gMeme.selectedLineIdx]) {
         gMeme.lines[gMeme.selectedLineIdx].text = newText
         renderCanvas()
-    }
-}
-
-function updateTextInput() {
-    const textInput = document.querySelector('.meme-text')
-    if (gMeme.selectedLineIdx >= 1 && gMeme.lines[gMeme.selectedLineIdx]) {
-        textInput.value = gMeme.lines[gMeme.selectedLineIdx].text
-        console.log('textInput.value', textInput.value)
-        console.log('gselectedLineIdx', gMeme.selectedLineIdx)
-        console.log('gMeme.lines.text', gMeme.lines[gMeme.selectedLineIdx].text)
-
-
-    } else if (gMeme.selectedLineIdx > 1) {
-        gMeme.lines.value = gMeme.selectedLineIdx[0].text
-        console.log('gmwme.lines.value', gMeme.lines.value);
-
-        console.log('textInput.value', textInput.value)
-        // gMeme.lines[gMeme.selectedLineIdx].text = textInput.value
     }
 }
 

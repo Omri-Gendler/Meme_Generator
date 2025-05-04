@@ -57,3 +57,19 @@ function moveTextLeft() {
     currLine.x -= 100
     renderCanvas()
 }
+
+function changeTextColor() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    const currColor = document.querySelector('.color').value
+    console.log('currColor', currColor)
+    console.log('currLine', currLine)
+
+    currLine.color = currColor
+    currLine.strokeStyles = currColor
+    renderCanvas()
+}
+
+function boldText() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+
+}

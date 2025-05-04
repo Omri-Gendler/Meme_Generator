@@ -1,10 +1,9 @@
 .header {
-    height: 100%;
+    height: 80%;
     width: 100%;
-    border-radius: 50px;
     background-image: linear-gradient(to right, #385edb, #4ed657);
     color: white;
-    height: minmax(90%);
+    height: minmax(70%);
     font-family: 'uri-font', sans-serif;
     font-size: 16px;
 
@@ -13,6 +12,7 @@
 .header-nav {
     /* gap: 10px; */
     margin-right: 12em;
+    gap: 2em;
 }
 
 .logo {

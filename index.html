@@ -11,7 +11,7 @@
 <body onload="initEditor()">
     <div class="application-container grid">
         <div class="header flex justify-content space-between align-items">
-            <section class="logo">logo</section>
+            <section class="logo">Mister Meme</section>
             <div class="header-nav flex">
                 <a href="gallery.html" class="gallery">gallery</a>
                 <button class="about">about</button>
@@ -24,11 +24,9 @@
                         class="meme-text" />
                 </div>
                 <div class="text-edit flex justify-content">
-                    <button onclick="up()" class="small-button">up</button>
-                    <button onclick="down()" class="small-button">down</button>
-                    <button onclick="switchToNextLine()" class="small-button">line</button>
-                    <!-- <button onclick="onGarbage()" class="small-button">garbage</button> -->
-                    <button onclick="onGarbage()" class="small-button"><i class="fa-solid fa-trash-can"></i></button>
+                    <button onclick="up()" class="small-button">🔼</button>
+                    <button onclick="down()" class="small-button">🔽</button>
+                    <button onclick="switchToNextLine()" class="small-button">⬅</button>
                 </div>
                 <div class="text-edit-container flex wrap">
                     <button onclick="increseFont()">+</button>
@@ -39,7 +37,7 @@
                         <option value="impact">impact</option>
                     </select>
                     <button>S</button>
-                    <input type="color">
+                    <input class="color" id="text-color-picker" onchange="changeTextColor()" type="color">
                 </div>
                 <div class="sticker-container flex justify-content align-items">
                     <button class="smiley-happy"><i class="fa-solid fa-sort"></i></button>
