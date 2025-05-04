@@ -15,7 +15,7 @@ const TOP_TEXT_Y = 40
 const BOTTOM_TEXT_Y_MARGIN = 40
 const DEFAULT_FONT_SIZE = 40
 const DEFAULT_FONT = 'Arial'
-const DEFAULT_COLOR = 'white'
+const DEFAULT_COLOR = 'black'
 const DEFAULT_STROKE_COLOR = 'black'
 const DEFAULT_STROKE_WIDTH = 2
 const DEFAULT_TEXT_ALIGN = 'center'
@@ -54,8 +54,8 @@ function loadImgToCanvas(imgSrc) {
         gCanvas.width = img.naturalWidth
         gCanvas.height = img.naturalHeight
         gMeme.lines = [
-            createLine(TOP_TEXT_Y, 'top'),
-            createLine(BOTTOM_TEXT_Y_MARGIN, 'bottom')
+            createLine(TOP_TEXT_Y, 'top', 'top text'),
+            createLine(BOTTOM_TEXT_Y_MARGIN, 'bottom', 'bottom text')
         ]
         gMeme.selectedLineIdx = 0
         syncInputWithSelectedLine()
@@ -66,9 +66,9 @@ function loadImgToCanvas(imgSrc) {
     }
 }
 
-function createLine(yPos, baseline) {
+function createLine(yPos, baseline, defaultText = '') {
     return {
-        text: txt,
+        text: defaultText,
         x: gCanvas.width / 2,
         y: yPos,
         font: DEFAULT_FONT,
@@ -172,11 +172,14 @@ function drawTextLine(line) {
     if (!line) return
 
     gCtx.font = `${line.fontSize}px ${line.font}`
-    gCtx.fillStyle = 'red'
-    gCtx.strokeStyle = 'red'
+    gCtx.fillStyle = 'black'
+    gCtx.strokeStyle = 'black'
     gCtx.lineWidth = line.strokeWidth
     gCtx.textAlign = line.textAlign
     gCtx.textBaseline = line.textBaseline
+
+    gCtx.strokeText(line.text, line.x, line.y)
+    gCtx.fillText(line.text, line.x, line.y)
 }
 
 function upDown() {
@@ -251,7 +254,7 @@ function drawSelectionIndicator(line) {
     if (line.textAlign === 'center') rectX -= textWidth / 2
     if (line.textBaseline !== 'top') rectY -= textHeight / 1.5
 
-    gCtx.strokeStyle = 'rgba(255, 255, 0, 0.7)'
+    gCtx.strokeStyle = 'rgb(20, 214, 207)'
     gCtx.lineWidth = 2;
     gCtx.strokeRect(rectX - padding, rectY - padding, textWidth + (padding * 2), textHeight + (padding * 2))
 }
@@ -289,4 +292,13 @@ function syncInputWithSelectedLine() {
     } else {
         textInput.value = ''
     }
+}
+
+function switchToNextLine() {
+    if (gMeme.lines.length < 2) return
+
+    gMeme.selectedLineIdx = (gMeme.selectedLineIdx === 0) ? 1 : 0
+
+    syncInputWithSelectedLine()
+    renderCanvas()
 }
