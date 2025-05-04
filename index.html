@@ -20,13 +20,13 @@
         <div class="main-content flex justify-content">
             <canvas class="canvas" height="300" width="300"></canvas>
             <div class="edit-container grid">
-                <div class="flex justify-content align-items"><input type="text" placeholder="type your text" class="meme-text" />
-                    <button onclick="addTextLine()" class="add-text">add text</button>
+                <div class="flex justify-content align-items"><input type="text" placeholder="type your text"
+                        class="meme-text" />
                 </div>
                 <div class="text-edit flex justify-content">
                     <button onclick="upDown()" class="small-button">updown</button>
-                    <button onclick="increaseText()" class="small-button">+</button>
-                    <button class="small-button">garbage</button>
+                    <button onclick="addTextLine()" class="small-button">+</button>
+                    <button onclick="onGarbage()" class="small-button">garbage</button>
                 </div>
                 <div class="text-edit-container flex wrap">
                     <button>+</button>
@@ -58,4 +58,5 @@
 </body>
 <script src="js/controllers/utils.js"></script>
 <script src="js/controllers/editorController.js"></script>
+
 </html>
