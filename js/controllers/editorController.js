@@ -303,16 +303,3 @@ function switchToNextLine() {
     renderCanvas()
 }
 
-function up() {
-    const currLine = gMeme.lines[gMeme.selectedLineIdx]
-    currLine.y = currLine.y - 10
-    drawTextLine(currLine)
-    renderCanvas()
-}
-
-function down() {
-    const currLine = gMeme.lines[gMeme.selectedLineIdx]
-    currLine.y = currLine.y + 10
-    drawTextLine(currLine)
-    renderCanvas()
-}

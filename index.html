@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mister Meme</title>
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/be5e12c42a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="initEditor()">
@@ -31,11 +31,10 @@
                     <button onclick="onGarbage()" class="small-button"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
                 <div class="text-edit-container flex wrap">
-                    <button>+</button>
-                    <button>-</button>
-                    <button>left</button>
-                    <button>middle</button>
-                    <button>right</button>
+                    <button onclick="increseFont()">+</button>
+                    <button onclick="decreaseFont()">-</button>
+                    <button onclick="moveTextLeft()">left</button>
+                    <button onclick="moveTextRight()">right</button>
                     <select class="impact text-align" type="impact" id="impact" name="impact">
                         <option value="impact">impact</option>
                     </select>

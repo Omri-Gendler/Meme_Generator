@@ -19,3 +19,41 @@ function addSmiley() {
     elCrazy.innerText = crazy
     elKing.innerText = king
 }
+
+function up() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.y = currLine.y - 10
+    drawTextLine(currLine)
+    renderCanvas()
+}
+
+function down() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.y = currLine.y + 10
+    drawTextLine(currLine)
+    renderCanvas()
+}
+
+function increseFont() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.fontSize += 2
+    renderCanvas()
+}
+
+function decreaseFont() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.fontSize -= 2
+    renderCanvas()
+}
+
+function moveTextRight() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.x += 100
+    renderCanvas()
+}
+
+function moveTextLeft() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.x -= 100
+    renderCanvas()
+}
