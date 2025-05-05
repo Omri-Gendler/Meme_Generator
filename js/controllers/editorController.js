@@ -43,7 +43,6 @@ function initEditor() {
     if (textInput) {
         textInput.addEventListener('input', onTextInput)
     }
-    addSmiley()
 }
 
 function loadImgToCanvas(imgSrc) {

@@ -1,12 +1,4 @@
-.small-button {
-    background-color: #71b9cd;
-    border: none;
-    border-radius: 18px;
-    text-decoration: none;
-    background-color: transparent;
-    font-size: 35px;
-}
-
 .small-button:hover {
+    background-color: #514747;
     cursor: pointer;
 }

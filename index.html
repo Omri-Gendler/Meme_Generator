@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mister Meme</title>
-    <script src="https://kit.fontawesome.com/be5e12c42a.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4d1adc0b58.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -24,31 +24,51 @@
                         class="meme-text" />
                 </div>
                 <div class="text-edit flex justify-content">
-                    <button onclick="up()" class="small-button">🔼</button>
-                    <button onclick="down()" class="small-button">🔽</button>
-                    <button onclick="switchToNextLine()" class="small-button">⬅</button>
+                    <button onclick="up()"
+                        class=" background-color small-button fa-solid fa-arrow-down fa-xl fa-rotate-180"
+                        style="color: #ffffff;">
+                    </button>
+                    <button onclick="down()" class="background-color small-button fa-solid fa-arrow-down fa-xl"
+                        style="color: #ffffff;">
+                    </button>
+                    <button onclick="switchToNextLine()" class="background-color small-button fa-solid fa-xl fa-sort"
+                        style="color: #ffffff;"></button>
                 </div>
                 <div class="text-edit-container flex wrap">
-                    <button onclick="increseFont()">+</button>
-                    <button onclick="decreaseFont()">-</button>
-                    <button onclick="moveTextLeft()">left</button>
-                    <button onclick="moveTextRight()">right</button>
+                    <button onclick="increseFont()"
+                        class="increase background-color fa-solid fa-arrow-up-right-dots fa-xl"></button>
+                    <button onclick="decreaseFont()"
+                        class="decrease background-color fa-solid fa-arrow-up-right-dots fa-rotate-90 fa-xl"></button>
+                    <button onclick="moveTextLeft()" class="background-color fa-solid fa-arrow-left fa-xl"
+                        style="color: #63E6BE;">
+                    </button>
+                    <button onclick="moveTextRight()" class="background-color fa-solid fa-arrow-left fa-rotate-180 fa-xl"
+                        style="color: #63E6BE;">
+                    </button>
                     <select class="impact text-align" type="impact" id="impact" name="impact">
                         <option value="impact">impact</option>
                     </select>
                     <button>S</button>
-                    <input class="color" id="text-color-picker" onchange="changeTextColor()" type="color">
+                    <input id="text-color-picker" onchange="changeTextColor()" type="color" class="color">
                 </div>
                 <div class="sticker-container flex justify-content align-items">
-                    <button class="smiley-happy"><i class="fa-solid fa-sort"></i></button>
-                    <button class="smiley-sad"></button>
-                    <button class="smiley-laugh"></button>
-                    <button class="smiley-crazy"></button>
-                    <button class="smiley-king"></button>
+                    <button class="smiley-happy background-color"> <i
+                            class="fa-regular fa-face-smile fa-2xl"></i></button>
+                    <button class="smiley-happy background-color"> <i
+                            class="fa-regular fa-face-smile fa-2xl"></i></button>
+                    <button class="smiley-happy background-color"> <i
+                            class="fa-regular fa-face-smile fa-2xl"></i></button>
+                    <button class="smiley-happy background-color"> <i
+                            class="fa-regular fa-face-smile fa-2xl"></i></button>
+                    <button class="smiley-happy background-color"> <i
+                            class="fa-regular fa-face-smile fa-2xl"></i></button>
                 </div>
                 <div class="share-container flex">
-                    <button class="share" onclick="onShareMeme()">share</button>
-                    <button class="download" onclick="onDownloadMeme(this)">download</button>
+                    <button onclick="onShareMeme()" class="share background-color fa-solid fa-share-nodes fa-2xl"
+                        style="color: #ffffff;">
+                    </button>
+                    <button onclick="onDownloadMeme(this)" class="download background-color fa-solid fa-download fa-xl"
+                        style="color: #ffffff;"></button>
                 </div>
             </div>
         </div>
