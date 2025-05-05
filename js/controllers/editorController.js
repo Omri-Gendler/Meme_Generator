@@ -246,3 +246,27 @@ function onDownloadMeme() {
     link.click()
     document.body.removeChild(link)
 }
+
+async function onShareMeme() {
+    const originalSelectedIdx = gMeme.selectedLineIdx
+    if (originalSelectedIdx >= 0) {
+        gMeme.selectedLineIdx = -1
+        renderCanvas()
+    } else {
+        renderCanvas()
+    }
+    const blob = await new Promise(resolve => gCanvas.toBlob(resolve, 'image/jpeg'))
+
+    const file = new File([blob], 'my-meme-share.jpg', { type: blob.type })
+
+    await navigator.share({
+        files: [file],
+        title: 'My Awesome Meme',
+        text: 'Check out this meme I made!',
+    });
+
+    if (originalSelectedIdx >= 0) {
+        gMeme.selectedLineIdx = originalSelectedIdx
+        renderCanvas()
+    }
+}

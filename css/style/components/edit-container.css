@@ -64,6 +64,10 @@
     align-self: center;
 }
 
+.share:hover {
+    cursor: pointer;
+}
+
 .download {
     background-color: rgb(114 213 255);
     width: 10em;
@@ -71,4 +75,8 @@
     border-radius: 18px;
     border: none;
     align-self: center;
+}
+
+.download:hover {
+    cursor: pointer;
 }
