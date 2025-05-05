@@ -1,6 +1,6 @@
 .canvas {
     border: 1px solid #000;
     height: minmax(90%);
-    width: 50%;
+    min-width: 15em;
     border-radius: 50px;
 }

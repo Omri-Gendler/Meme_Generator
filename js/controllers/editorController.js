@@ -223,3 +223,26 @@ function switchToNextLine() {
     renderCanvas()
 }
 
+function onDownloadMeme() {
+    const originalSelectedIdx = gMeme.selectedLineIdx
+    if (originalSelectedIdx >= 0) {
+        gMeme.selectedLineIdx = -1
+        renderCanvas()
+    } else {
+        renderCanvas()
+    }
+
+    const dataUrl = gCanvas.toDataURL('image/jpeg')
+
+    if (originalSelectedIdx >= 0) {
+        gMeme.selectedLineIdx = originalSelectedIdx
+        renderCanvas()
+    }
+
+    const link = document.createElement('a')
+    link.href = dataUrl
+    link.download = 'my-meme.jpg'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+}
