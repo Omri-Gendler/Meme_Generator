@@ -35,3 +35,23 @@ img {
     height: 200px;
 }
 
+.home {
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-decoration: none;
+}
+
+.home:hover {
+    cursor: pointer;
+}
+
+.about {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.about:hover {
+    cursor: pointer;
+}
