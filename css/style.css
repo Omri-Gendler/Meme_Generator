@@ -68,4 +68,8 @@
         text-shadow: nones;
         box-sizing: border-box;
     }
+
+    .application-container {
+        background-color: transparent;
+    }
 }
