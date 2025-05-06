@@ -41,9 +41,18 @@
         max-width: 100%;
         max-height: 50%;
     }
-    
+
     .edit-container {
         max-width: 100%;
         max-height: 50%;
+        gap: 1em;
+    }
+
+    .header-nav {
+        flex-direction: column;
+    }
+
+    .logo {
+        text-align: center;
     }
 }
