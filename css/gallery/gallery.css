@@ -1,3 +1,30 @@
+
+body{
+    display: grid;
+}
+
+.header {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #385edb, #4ed657);
+    color: white;
+    height: minmax(70%);
+    font-family: 'uri-font', sans-serif;
+    font-size: 16px;
+
+}
+
+.header-nav {
+    justify-self: end;
+    margin-right: 12em;
+    gap: 2em;
+}
+
+.logo {
+    margin-left: 10em;
+    margin-top: 4em;
+}
+
 h1 {
     text-align: center;
     text-decoration: underline;
