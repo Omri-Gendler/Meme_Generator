@@ -53,3 +53,9 @@ function boldText() {
     const currLine = gMeme.lines[gMeme.selectedLineIdx]
 
 }
+
+function addSticker(ev) {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    const currColor = document.querySelector('.color').value
+    console.log('ev',ev)
+}

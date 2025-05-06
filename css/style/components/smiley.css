@@ -1,0 +1,7 @@
+.smiley {
+    gap: em;
+}
+
+.smiley:hover {
+    cursor: pointer;
+}
