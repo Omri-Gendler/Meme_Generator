@@ -10,3 +10,40 @@
 @import url('style/components/main-content.css');
 @import url('style/components/edit-container.css');
 @import url('style/components/edit-container-buttons.css');
+
+/* MD */
+/* @import url('md.css');
+ */
+
+/* הוסף את זה בסוף קובץ ה-CSS הראשי שלך (למשל, css/style.css) */
+
+@media (max-width: 600px) {
+    .application-container {
+        /* display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr; */
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .canvas {
+        max-width: 100%;
+        max-height: 50%;
+    }
+    
+    .edit-container {
+        max-width: 100%;
+        max-height: 50%;
+    }
+}

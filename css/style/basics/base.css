@@ -32,7 +32,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(122, 99, 99);
+    /* background-color: rgb(122, 99, 99); */
     background-image: url(meme-imgs/background/5059a05f-e254-4c95-a452-713597f19ac6.jpg);
     background-repeat: no-repeat;
     background-size: cover;
